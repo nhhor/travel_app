@@ -1,1 +1,9 @@
 <h1>test</h1>
+
+<% if @response.any? %>
+
+    <% @response.each do |response| %>
+      <p><%= link_to response['name'], destination_path(response["id"]) %> | <%= response['city'] %> | <%= response['country'] %></p>
+
+  <% end %>
+<% end %>
