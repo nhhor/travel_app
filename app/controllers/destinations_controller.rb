@@ -2,7 +2,6 @@ class DestinationsController < ApplicationController
 
   def index
     @response = DestinationService.get_destinations
-    # binding.pry
     if (@response.key?('error'))
       render :error
     else

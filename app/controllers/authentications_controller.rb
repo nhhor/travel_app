@@ -1,19 +1,16 @@
 class AuthenticationsController < ApplicationController
 
   def index
-    @product = Product.new
     render :index
   end
 
 
   def create
+    puts "HELLO"
     # @authentication = Authentication.new(authentication_params)
-    HTTParty.post('HTTP://localhost:3000/authentications', {email:"example@mail.com",password:"123123123"})
-    # API STUFF
+    $jwt_auth = HTTParty.post('HTTP://localhost:3000/authenticate', body: {email:"example@mail.com",password:"123123123"})
+    binding.pry
+    redirect_to '/destinations'
   end
 
 end
-
-
-# $ curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0NjA2NTgxODZ9.xsSwcPC22IR71OBv6bU_OGCSyfE89DvEzWfDU0iybMA" http://localhost:3000/items
-# []
