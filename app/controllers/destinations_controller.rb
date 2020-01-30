@@ -5,7 +5,7 @@ class DestinationsController < ApplicationController
     if (@response.key?('error'))
       render :error
     else
-      # @response = HTTParty.get('HTTP://localhost:3000/destinations')
+        # @response = HTTParty.get('HTTP://localhost:3000/destinations')
       render :index
     end
 

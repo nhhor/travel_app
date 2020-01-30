@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  attr_accessor :password
+  validates_confirmation_of :password
+  validates :email, :presence => true, :uniqueness => true
 
   def initialize(email, password, password_confirmation)
     @email = email
@@ -7,7 +10,7 @@ class User < ApplicationRecord
   end
 
   def post_user
-    response = HTTParty.post('localhost:3000/authenticate', {"email":"#{@email}","password":"#{@password}"})
+    response = HTTParty.post('localhost:3333/authenticate', {"email":"#{@email}","password":"#{@password}"})
     response
   end
 
